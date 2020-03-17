@@ -13,6 +13,30 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::get('/', 'HomeController@index');
+
+
+
+
+Route::get('about', 'HomeController@about');
+
+
+// ==============================
+//          MANAGEMENT ROUTES
+// ===============================
+Route::get('/adminlogin', 'HomeController@login');
+Route::post('/adminlogin', 'HomeController@doLogin');
+
+Route::group(['middleware'=>'auth'], function(){
+
+    Route::get('/admin/', 'AdminController@index');
+    Route::post('/admin/category', 'AdminController@createCategory'); // create a new category
+
+    Route::get('/admin/category/{category}', 'AdminController@editCategory'); // edit a category and its links
+    
+    Route::post('/admin/link', 'AdminController@createLink'); // create a new link
+    
+    Route::get('/admin/link/{link}', 'AdminController@editLink');
+    Route::post('/admin/link/{link}', 'AdminController@updateLink');
+
 });
