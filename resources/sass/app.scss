@@ -6,3 +6,159 @@
 
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
+
+body{
+	background-color:$tan;
+	color:#6c6e6f;
+}
+
+
+/////////////////////////////////////////////////////
+//				HEADER
+/////////////////////////////////////////////////////
+
+.louisville-resources__header{
+		color:$darker-blue;
+		max-width:1200px;
+		margin:0 auto;
+		&__h1{
+			font-size:3rem;
+			font-weight: 900;
+			padding: 30px 30px;
+			letter-spacing: 2px;
+		}
+		&__bar{
+			display:block;
+			background-color: $darker-blue;
+			height:25px;
+			position:relative;
+			margin-bottom:10px;
+
+			&:before{
+				background-color:$seafoam;
+				top:-10px;
+				display:block;
+				content:'';
+				height:5px;
+				position:absolute;
+				width: 100%;
+			}
+
+			&:after{
+				background-color:$light-blue;
+				bottom:-10px;
+				display:block;
+				content:'';
+				height:5px;
+				position:absolute;
+				width: 100%;
+			}
+		}
+	}
+
+/////////////////////////////////////////////////////
+//				RESOURCES
+/////////////////////////////////////////////////////
+
+.resources{
+
+	&__container{
+		max-width:1200px;
+		margin: 0 auto;
+		background-color:white;
+		padding-top:40px;
+		font-size:1rem;
+	}
+}
+
+.category{
+	
+	&__header{
+		display:block;
+		background-color:$seafoam;
+		margin-bottom:50px;
+		position:relative;
+
+		&:after{
+				background-color:$light-blue;
+				bottom:-20px;
+				display:block;
+				content:'';
+				height:12px;
+				position:absolute;
+				width: 100%;
+			}
+
+		&__h1{
+			color:white;
+			font-weight:700;
+			letter-spacing:2px;
+			padding:20px 30px;
+		}
+	}
+
+	&__content{
+		margin-bottom:50px;
+		a {
+			color:$darker-blue;
+			&:hover{
+				color:$seafoam;
+			}
+		}
+	}
+
+	&__p{
+		padding:0 20px;	
+		}
+}
+
+/////////////////////////////////////////////////////
+//				FOOTER
+/////////////////////////////////////////////////////
+
+.louisville-resources__footer{
+	max-width:1200px;
+	margin:0 auto;
+	background-color:$darker-blue;
+	padding:20px;
+	color:white;
+	text-align:center;
+
+	&__a{
+		color:white;
+		&:hover{
+			color:$seafoam;
+		}
+	}
+}
+
+//=========================================
+//			DESKTOP STYLING
+//=========================================
+
+
+@media all and (min-width: 700px){
+	.louisville-resources__header{
+		padding-top:50px;
+	}
+
+	.resources{
+
+		&__container{
+			padding:20px;
+			padding-top:75px;
+		}
+	}
+
+	.category{
+		&__header{
+			position:relative;
+			left:-50px;
+			max-width:750px;
+
+			&__h1{
+				padding: 20px 20px 20px 45px;
+			}
+		}
+	}
+}

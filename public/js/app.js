@@ -65721,8 +65721,8 @@ if (document.getElementById('example')) {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! D:\projects\louisvilleresources\www\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! D:\projects\louisvilleresources\www\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\wamp64\www\louisvilleresources\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\wamp64\www\louisvilleresources\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
