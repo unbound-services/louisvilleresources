@@ -19,7 +19,7 @@ body{
 
 .louisville-resources__header{
 		color:$darker-blue;
-		max-width:1200px;
+		max-width:$max-width;
 		margin:0 auto;
 		&__h1{
 			font-size:3rem;
@@ -63,7 +63,7 @@ body{
 .resources{
 
 	&__container{
-		max-width:1200px;
+		max-width:$max-width;
 		margin: 0 auto;
 		background-color:white;
 		padding-top:40px;
@@ -117,7 +117,7 @@ body{
 /////////////////////////////////////////////////////
 
 .louisville-resources__footer{
-	max-width:1200px;
+	max-width:$max-width;
 	margin:0 auto;
 	background-color:$darker-blue;
 	padding:20px;
@@ -129,6 +129,49 @@ body{
 		&:hover{
 			color:$seafoam;
 		}
+	}
+}
+
+/////////////////////////////////////////////////////
+//				SUBMISSION FORM
+/////////////////////////////////////////////////////
+
+.submission-form{
+	margin:0 auto;
+	padding:20px;
+	max-width:350px;
+
+	&__label{
+		display:block;
+		text-transform:uppercase;
+		color:$darker-blue;
+		font-size:0.85rem;
+		font-weight:900;
+	}
+	&__span{
+		display:block;
+	}
+
+	&__input{
+		min-width:300px;
+	}
+
+	&__textarea{
+		min-width:300px;
+	}
+
+	&__submit{
+		display:block;
+		background-color:$seafoam;
+		color: white;
+	    padding: 5px 10px;
+	    width: 300px;
+	    border:none;
+	    font-weight: bold;
+
+	    &:hover{
+	    	background-color:$darker-blue;
+	    }
 	}
 }
 

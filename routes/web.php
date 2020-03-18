@@ -20,6 +20,8 @@ Route::get('/', 'HomeController@index');
 
 Route::get('about', 'HomeController@about');
 
+Route::post('submit-resources', 'SubmissionController@submitResources');
+
 
 // ==============================
 //          MANAGEMENT ROUTES
