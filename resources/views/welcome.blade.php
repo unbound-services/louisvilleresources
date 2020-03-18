@@ -26,10 +26,7 @@
                             <h1 class='category__header__h1'>What is this?</h1>
                         </header>
                         <div class='category__content'>
-                        
-                            <p class='category__p'>
-                                The purpose of this site is to provide reliable information and various resources to the citizens of Louisville affected by the coronavirus outbreak. These resources include information on unemployment, childcare, and business openings and closures, among many other valuable resources. This ongoing project will be updated as we receive any new resources or updates.
-                            </p>
+                    
                             <p class='category__p'>
                                 The purpose of this site is to provide reliable information and various resources to the citizens of Louisville affected by the coronavirus outbreak. These resources include information on unemployment, childcare, and business openings and closures, among many other valuable resources. This ongoing project will be updated as we receive any new resources or updates.
                             </p>
