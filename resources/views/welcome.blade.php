@@ -74,10 +74,20 @@
                     </article>
             </div>
         </main>
+        
         <footer class='louisville-resources__footer'>
             <span class='louisville-resources__footer__span'>
                 © Copyright 2020 <a class='louisville-resources__footer__a' href='https:\\www.unbound.services'>Unbound</a>
             </span>
         </footer>
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id={{env('ANALYTICS_KEY')}}"></script>
+        <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', '{{env('ANALYTICS_KEY')}}');
+        </script>
     </body>
 </html>
