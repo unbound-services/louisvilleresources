@@ -36,8 +36,7 @@ Route::group(['middleware'=>'auth'], function(){
 
 
     Route::get('/admin/category/{category}', 'AdminController@editCategory'); // edit a category and its links
-    //* Shouldn't the above be read and the below be edit? Legitimately asking?
-    Route::post('/admin/category/{category}/edit', 'AdminController@submitCategoryEdit'); // post an edit to a category
+    Route::post('/admin/category/{category}', 'AdminController@updateCategory'); // post an edit to a category
 
     Route::post('/admin/link', 'AdminController@createLink'); // create a new link
 

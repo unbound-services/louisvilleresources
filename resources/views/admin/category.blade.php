@@ -4,7 +4,8 @@
 @section('main')
 
     <h1>Editing {{$category->name}} </h1>
-
+    @component('admin.components.admin-components-category-form', ['category'=>$category])
+    @endcomponent
     @if(count($category->links))
         <h2>Links currently in this category:</h2>
         <ul>

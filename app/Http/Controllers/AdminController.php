@@ -31,15 +31,10 @@ class AdminController extends Controller
         return view('admin.category')->with(compact('category'));
     }
 
-    public function submitCategoryEdit(Request $request, Category $category) {
-      if($request->name) {
-        $category->name = $request->name;
-      }
-      if($request->description) {
-        $category->description = $request->description;
-      }
+    public function updateCategory(Request $request, Category $category) {
+      $category->update($request->all());
       $category->save();
-      return view('admin.category')->with(compact('category'));
+      return redirect()->back();
     }
 
 
@@ -47,5 +42,15 @@ class AdminController extends Controller
         $data = $request->only(['name', 'url', 'category_id', 'description']);
         $link = Link::create($data);
         return redirect()->back();
+    }
+
+    public function editLink(Request $request, Link $link){
+      return view('admin.link')->with(compact('link'));
+    }
+
+    public function updateLink(Request $request, Link $link){
+      $link->update($request->all());
+      $link->save();
+      return redirect()->back();
     }
 }

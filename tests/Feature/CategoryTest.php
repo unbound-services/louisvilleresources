@@ -17,18 +17,18 @@ class CategoryTest extends TestCase
      */
     use WithoutMiddleware;
     use DatabaseMigrations;
-
+    use RefreshDatabase;
     public function testCategoryEditForm() {
       $this->withoutExceptionHandling();
       $category = factory(Category::class)->create();
       $oldName = $category->name;
       $oldDescription = $category->description;
 
-      $response = $this->postJson('admin/category/'.$category->id.'/edit', [
+      $response = $this->postJson('/admin/category/'.$category->id.'/edit', [
         'name' => 'new name'
       ]);
-      $response->assertStatus(200);
-      dd(Category::find($category->id));
+      $response->assertStatus(302);
+      dd(Category::find($category->id)->name);
       $this->assertTrue(
         Category::find($category->id)->name == 'new name'
 
