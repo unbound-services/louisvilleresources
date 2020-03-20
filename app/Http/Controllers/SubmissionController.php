@@ -14,6 +14,10 @@ use GuzzleHttp\Client;
 
 class SubmissionController extends Controller
 {
+    public function getForm(){
+        return view('pages.submission-page');
+    }
+
     public function submitResources(Request $request) {
         
         if(!$request->resources){
