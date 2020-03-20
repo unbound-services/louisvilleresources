@@ -30,7 +30,7 @@ body{
 		&__bar{
 			display:block;
 			background-color: $darker-blue;
-			height:25px;
+			height:30px;
 			position:relative;
 			margin-bottom:10px;
 
@@ -55,6 +55,29 @@ body{
 			}
 		}
 	}
+
+
+/////////////////////////////////////////////////////
+//				NAV
+/////////////////////////////////////////////////////
+.louisville-resources__nav{
+	&__ul{
+		list-style:none;
+	}
+	&__li{
+		display:inline-block;
+		color:white;
+		font-weight: bold;
+	    text-transform: uppercase;
+	    vertical-align: top;
+	    padding: 5px;
+	}
+	&__a{
+		color:white;
+	}
+
+}
+
 
 /////////////////////////////////////////////////////
 //				RESOURCES
@@ -172,6 +195,28 @@ body{
 	    &:hover{
 	    	background-color:$darker-blue;
 	    }
+	}
+}
+
+/////////////////////////////////////////////////////
+//				CONTACT BUTTON
+/////////////////////////////////////////////////////
+
+.contact-button{
+	display:block;
+	background-color:$darker-blue;
+	color: white;
+    padding: 5px 10px;
+    width: 300px;
+    border:none;
+    font-weight: bold;
+
+	&:hover{
+    	background-color:$seafoam;
+    }
+	&__container{
+		margin:0 auto;
+		width:300px;
 	}
 }
 
