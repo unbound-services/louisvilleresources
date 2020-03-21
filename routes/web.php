@@ -33,6 +33,11 @@ Route::post('/adminlogin', 'HomeController@doLogin');
 Route::group(['middleware'=>'auth'], function(){
 
     Route::get('/admin/', 'AdminController@index');
+
+    Route::get('/admin/businesses', 'AdminBusinessController@index');
+    Route::post('/admin/businesses', 'AdminBusinessController@createBusiness');
+    Route::get('/admin/businesses/{business}', 'AdminBusinessController@edit');
+
     Route::post('/admin/category', 'AdminController@createCategory'); // create a new category
 
     Route::get('/admin/category/{category}', 'AdminController@editCategory'); // edit a category and its links

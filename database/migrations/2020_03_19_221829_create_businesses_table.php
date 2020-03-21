@@ -16,14 +16,16 @@ class CreateBusinessesTable extends Migration
         Schema::create('businesses', function (Blueprint $table) {
             $table->id();
             $table->string("name");
+            $table->text("description")->nullable();
             $table->string("street_address")->nullable();
             $table->string('zipcode')->nullable();
             $table->string('phone')->nullable();
             $table->string('current_status')->nullable();
+            $table->string('hours')->nullable();
+            $table->string('website')->nullable();
             $table->text('notes')->nullable();
-            $table->boolean('takeout')->default(false);
-            $table->boolean('delivery')->default(false);
-            $table->boolean('online_services')->default(false);
+            $table->dateTime('last_confirmed')->useCurrent();
+            $table->boolean('active')->default(false);
             $table->timestamps();
         });
     }
