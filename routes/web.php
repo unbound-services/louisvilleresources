@@ -34,9 +34,10 @@ Route::group(['middleware'=>'auth'], function(){
 
     Route::get('/admin/', 'AdminController@index');
 
-    Route::get('/admin/businesses', 'AdminBusinessController@index');
-    Route::post('/admin/businesses', 'AdminBusinessController@createBusiness');
-    Route::get('/admin/businesses/{business}', 'AdminBusinessController@edit');
+    Route::get('/admin/business', 'AdminBusinessController@index');
+    Route::post('/admin/business', 'AdminBusinessController@createBusiness');
+    Route::get('/admin/business/{business}', 'AdminBusinessController@edit');
+    Route::post('/admin/business/{business}', 'AdminBusinessController@update');
 
     Route::post('/admin/category', 'AdminController@createCategory'); // create a new category
 

@@ -20,6 +20,7 @@ class CreateBusinessesTable extends Migration
             $table->string("street_address")->nullable();
             $table->string('zipcode')->nullable();
             $table->string('phone')->nullable();
+            $table->string('email')->nullable();
             $table->string('current_status')->nullable();
             $table->string('hours')->nullable();
             $table->string('website')->nullable();
