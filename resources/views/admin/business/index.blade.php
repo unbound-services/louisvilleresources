@@ -16,7 +16,7 @@
 
 
     <h2>Create a new Business</h2>
-    <form class='admin-form' method='post' action='/admin/businesses'>
+    <form class='admin-form' method='post' action='/admin/business'>
         @csrf
         @include('components.admin-input',['name'=>'name', 'label'=>'Business Name'])
         <input type='submit' />

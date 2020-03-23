@@ -32,6 +32,8 @@ class AdminBusinessController extends Controller
         $business->update($request->only('name',
             'description',
             'street_address',
+            'latitude',
+            'longitude',
             'zipcode',
             'email',
             'phone',
