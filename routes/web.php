@@ -44,4 +44,7 @@ Route::group(['middleware'=>'auth'], function(){
     Route::get('/admin/link/{link}', 'AdminController@editLink');
     Route::post('/admin/link/{link}', 'AdminController@updateLink');
 
+    Route::get('/admin/tags', 'TagController@index');
+    Route::post('/admin/tag', 'TagController@createTag');
+
 });
