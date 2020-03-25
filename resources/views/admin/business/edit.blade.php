@@ -26,6 +26,9 @@
     <input type='submit' value='Update Business Listing' />
 
     </form>
+{{-- TAGS --}}
+@include('admin.business.business-tags', ['business_id'=>$business->id, 'tags'=>$tags])
+
 <script src="https://maps.googleapis.com/maps/api/js?key={{env('GOOGLE_MAPS_API_PUBLIC_KEY', '')}}&libraries=places"></script>
 
 <script src="{{mix('js/business-page.js')}}"></script>

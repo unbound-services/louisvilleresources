@@ -25,7 +25,8 @@ class AdminBusinessController extends Controller
     }
 
     public function edit(Request $request, Business $business){
-        return view('admin.business.edit')->with(compact('business'));
+        $tags = $business->tags;
+        return view('admin.business.edit')->with(compact('business'))->with(compact('tags'));
     }
 
     public function update(Request $request, Business $business){
