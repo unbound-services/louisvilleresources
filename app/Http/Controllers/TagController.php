@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Tag;
+use App\Business;
 
 class TagController extends Controller
 {
@@ -15,9 +16,17 @@ class TagController extends Controller
             ->with(compact('tags'));
     }
 
-    public function createTag(Request $request){
-        $data = $request->only(['name']);
-        $tag = Tag::create($data);
+
+
+    public function addTagsToBusiness(Request $request, Business $business){
+        $tags = explode(',',$request->tags);
+        foreach($tags as $tag){
+        	$newTag = Tag::firstOrCreate(['name' => $tag]);
+				if($business->tags->contains($newTag) === false){
+					$business->tags()->save($newTag);
+				}
+        }
         return redirect()->back();
     }
+
 }

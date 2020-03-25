@@ -17,7 +17,6 @@
         <p> -- there are no links in this category yet --</p>
     @endif
 
-
     <h2>Create a new Link in this Category</h2>
     <form class='admin-form' method='post' action='/admin/link'>
         @csrf

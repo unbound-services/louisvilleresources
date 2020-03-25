@@ -33,6 +33,13 @@ Route::post('/adminlogin', 'HomeController@doLogin');
 Route::group(['middleware'=>'auth'], function(){
 
     Route::get('/admin/', 'AdminController@index');
+
+    Route::get('/admin/business', 'AdminBusinessController@index');
+    Route::post('/admin/business', 'AdminBusinessController@createBusiness');
+    Route::get('/admin/business/{business}', 'AdminBusinessController@edit');
+    Route::post('/admin/business/{business}', 'AdminBusinessController@update');
+    Route::post('/admin/business/{business}/tag', 'TagController@addTagsToBusiness');
+
     Route::post('/admin/category', 'AdminController@createCategory'); // create a new category
 
 
@@ -44,7 +51,5 @@ Route::group(['middleware'=>'auth'], function(){
     Route::get('/admin/link/{link}', 'AdminController@editLink');
     Route::post('/admin/link/{link}', 'AdminController@updateLink');
 
-    Route::get('/admin/tags', 'TagController@index');
-    Route::post('/admin/tag', 'TagController@createTag');
 
 });
