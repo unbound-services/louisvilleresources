@@ -32,7 +32,7 @@ h1,h2,h3 {
 </head>
 <body>
 <header><h1>Louisville Resources Backend</h1>
-<a href='/admin'>Categories</a> | <a href='/admin/business'>Businesses</a>
+<a href='/admin'>Categories</a> | <a href='/admin/business'>Businesses</a> | <a href='/admin/tags'>Tags</a> | <a href='/admin/tag-groups'>Tag Groups</a>
 </header>
 <main>
 @yield('main')

@@ -40,6 +40,18 @@ Route::group(['middleware'=>'auth'], function(){
     Route::post('/admin/business/{business}', 'AdminBusinessController@update');
     Route::post('/admin/business/{business}/tag', 'TagController@addTagsToBusiness');
 
+    Route::get('/admin/tags', 'TagController@index');
+    Route::get('/admin/tags/{tag}', 'TagController@edit');
+    Route::post('/admin/tags/{tag}', 'TagController@update');
+    Route::post('/admin/tag', 'TagController@create');
+
+    Route::get('/admin/tag-groups', 'TagGroupController@index');
+    Route::get('/admin/tag-groups/{tagGroup}', 'TagGroupController@edit');
+    Route::post('/admin/tag-groups/{tagGroup}', 'TagGroupController@update');
+    Route::post('/admin/tag-groups/{tagGroup}/add', 'TagGroupController@addTagToGroup');
+    Route::post('/admin/tag-groups/{tagGroup}/remove/{tag}', 'TagGroupController@removeTagFromGroup');
+    Route::post('/admin/tag-group', 'TagGroupController@create');
+
     Route::post('/admin/category', 'AdminController@createCategory'); // create a new category
 
 
