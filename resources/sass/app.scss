@@ -3,6 +3,7 @@
 
 // Variables
 @import 'variables';
+@import 'directory';
 
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
@@ -95,7 +96,7 @@ body{
 }
 
 .category{
-	
+
 	&__header{
 		display:block;
 		background-color:$seafoam;
@@ -131,7 +132,7 @@ body{
 	}
 
 	&__p{
-		padding:0 20px;	
+		padding:0 20px;
 		}
 }
 
