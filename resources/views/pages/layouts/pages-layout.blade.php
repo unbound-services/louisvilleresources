@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-
+        @yield('metaTags')
         <title>Louisville Social Distancing Resources</title>
 
         <!-- Fonts -->
@@ -11,6 +11,7 @@
 
 
         <link rel='stylesheet' href="{{ mix('/css/app.css') }}" />
+
     </head>
     <body>
         <header class='louisville-resources__header'>
@@ -39,7 +40,7 @@
             @yield('content')
             </div>
         </main>
-        
+
         <footer class='louisville-resources__footer'>
             <span class='louisville-resources__footer__span'>
                 © Copyright 2020 <a class='louisville-resources__footer__a' href='https:\\www.unbound.services'>Unbound</a>
