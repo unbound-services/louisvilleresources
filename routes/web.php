@@ -15,6 +15,9 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', 'HomeController@index');
 
+Route::get('/directory', 'BusinessDirectoryController@index');
+Route::get('/directory/{business}', 'BusinessDirectoryController@view');
+
 
 Route::get('about', 'HomeController@about');
 

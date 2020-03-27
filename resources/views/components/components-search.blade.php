@@ -1,7 +1,14 @@
-<div class='submission-form'>
+@php
+if(isset($searchTerm)){
+	$value = $searchTerm;
+}else{
+	$value = null;
+}
+@endphp
+
+<div>
 <form method='GET' action='/search'>
-	@csrf
-	<x-admin-input name="search" />
-	<input type="submit">
+	<x-components-common-input name="search" label='Search for a business:' :value='$value' />
+	<input type="submit" value='Search'>
 </form>
 </div>

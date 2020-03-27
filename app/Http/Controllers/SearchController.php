@@ -15,11 +15,11 @@ class SearchController extends Controller
         $searchTerm = $request->search;
 
         $results = Business::query()
-           ->where('name', 'LIKE', $searchTerm) 
+           ->where('name', 'LIKE', '%'.$searchTerm.'%') 
            ->get();
 
 
-        return view('pages.search-results-page')->with(['results'=>$results]);
+        return view('pages.search-results-page')->with(['results'=>$results, 'searchTerm'=>$searchTerm]);
 
     }
 
