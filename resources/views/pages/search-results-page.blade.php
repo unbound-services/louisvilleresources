@@ -11,7 +11,6 @@
 			<li><a href='/directory/{{$result->id}}'>{{$result->name}}</a></li>
 			@endforeach
 		</ul>
-
 	@else
 		No Results
 	@endif

@@ -9,7 +9,7 @@ use App\Business;
 class BusinessDirectoryController extends Controller
 {
   public function index(){
-      $businesses = Business::all();
+      $businesses = Business::all()-> sortBy('name');
 
       return view('pages.pages-directory')
         ->with(compact('businesses'));
