@@ -1,15 +1,26 @@
 
 @extends('pages.layouts.pages-layout')
 
+@section('metaTags')
+  <meta property="og:title" content="Resources and links for those effected by the COVID-19 virus in Louisville" />
+  <meta property="og:url" content="{{env('APP_URL')}}" />
+  <meta property="og:image" content="{{env('APP_URL')}}/img/og-previews/home3.png" />
+  <meta property="og:image:type" content="image/png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="1200" />
+  <meta property="og:image:alt" content="A picture of a list of resources and links" />
+  {{-- <meta property="og:description" content="Find information and resources about the COVID-19 virus in Louisville" /> --}}
+@endsection
+
 @section('content')
 
-            
+
                 <article class='category__container category__container--about'>
                         <header class='category__header'>
                             <h1 class='category__header__h1'>What is this?</h1>
                         </header>
                         <div class='category__content'>
-                    
+
                             <p class='category__p'>
                                 The purpose of this site is to provide reliable information and various resources to the citizens of Louisville affected by the coronavirus outbreak. These resources include information on unemployment, childcare, and business openings and closures, among many other valuable resources. This ongoing project will be updated as we receive any new resources or updates.
                             </p>
