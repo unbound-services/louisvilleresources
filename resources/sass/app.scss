@@ -3,6 +3,7 @@
 
 // Variables
 @import 'variables';
+@import 'directory';
 
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
@@ -95,7 +96,7 @@ body{
 }
 
 .category{
-	
+
 	&__header{
 		display:block;
 		background-color:$seafoam;
@@ -131,7 +132,7 @@ body{
 	}
 
 	&__p{
-		padding:0 20px;	
+		padding:0 20px;
 		}
 }
 
@@ -224,6 +225,31 @@ body{
 		margin:0 auto;
 		width:300px;
 	}
+}
+
+
+/////////////////////////////////////////////////////
+//				COMMON FORM
+/////////////////////////////////////////////////////
+
+.common-form-input{
+
+	display:inline;
+
+	&__submit{
+		display:inline;
+	}
+}
+
+/////////////////////////////////////////////////////
+//				SEARCH
+/////////////////////////////////////////////////////
+.search__form{
+	margin-bottom:30px;
+}
+
+.search-results{
+	padding:20px;
 }
 
 //=========================================

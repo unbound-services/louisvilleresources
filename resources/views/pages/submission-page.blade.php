@@ -12,6 +12,9 @@
             <p class='category__p'>Do you know of any resources that are not listed here? Have a question or need a help finding a specific resource? Let us know in the form below! This project is ongoing and we will be continually updating the site with new resources as we recieve them.</p>
             @include('components.submission-form')
         </div>
-    </article>
+</article>
+
+
+@include('components.components-search')
 
 @endsection

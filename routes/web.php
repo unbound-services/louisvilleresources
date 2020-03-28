@@ -15,12 +15,14 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', 'HomeController@index');
 
-
+Route::get('/directory', 'BusinessDirectoryController@index');
+Route::get('/directory/{business}', 'BusinessDirectoryController@view');
 
 
 Route::get('about', 'HomeController@about');
 
 Route::post('submit-resources', 'SubmissionController@submitResources');
+Route::get('search', 'SearchController@search');
 Route::get('contact', 'SubmissionController@getForm');
 
 
@@ -58,7 +60,7 @@ Route::group(['middleware'=>'auth'], function(){
     Route::get('/admin/category/{category}', 'AdminController@editCategory'); // edit a category and its links
     Route::post('/admin/category/{category}', 'AdminController@updateCategory'); // post an edit to a category
 
-    Route::post('/admin/link', 'AdminController@createLink'); // create a new link
+    Route::post('/admin/link', 'AdminController@createLink'); //create a new link
 
     Route::get('/admin/link/{link}', 'AdminController@editLink');
     Route::post('/admin/link/{link}', 'AdminController@updateLink');
