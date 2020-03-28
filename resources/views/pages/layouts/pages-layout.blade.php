@@ -30,6 +30,12 @@
                                 Contact
                             </a>
                         </li>
+                        <li class='louisville-resources__nav__li'>|</li>
+                        <li class='louisville-resources__nav__li'>
+                            <a class='louisville-resources__nav__a' href='/directory'>
+                                Business Directory
+                            </a>
+                        </li>
                     </ul>
                 </nav>
             </div>

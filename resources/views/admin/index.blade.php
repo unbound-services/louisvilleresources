@@ -23,8 +23,7 @@
         </label>
         <label class='admin-form__label'>
             Category Description
-            <textarea name='description'>
-            </textarea>
+            <textarea name='description'></textarea>
         </label>
         <input type='submit' />
     </form>

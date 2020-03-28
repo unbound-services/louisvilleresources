@@ -13,6 +13,7 @@
 @section('content')
 <section class="directory">
   <h1 class="directory__h1">Business Directory</h1>
+  @include('components.components-search')
   <ul class="directory__ul">
     @foreach ($businesses as $business)
       <li class="directory__li">
@@ -23,7 +24,9 @@
           </header>
           <div class="directory-entry__body">
             <p class="directory-entry__p">{{$business->phone}}</p>
-            <p class="directory-entry__p directory-entry__website"><a href="{{$business->website}}" class="directory-entry__link">Website</a></p>
+            <p class="directory-entry__p directory-entry__website">
+              <a href="{{$business->website}}" class="directory-entry__link">Website</a>
+            </p>
             <a class="directory-entry__read-more" href="/directory/{{$business->id}}" target="_blank">Read More</a>
           </div>
         </article>
@@ -31,5 +34,4 @@
     @endforeach
   </ul>
 </section>
-
 @endsection

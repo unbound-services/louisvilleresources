@@ -1,4 +1,3 @@
-
 @extends('pages.layouts.pages-layout')
 
 @section('content')

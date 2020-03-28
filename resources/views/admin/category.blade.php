@@ -20,17 +20,20 @@
     <h2>Create a new Link in this Category</h2>
     <form class='admin-form' method='post' action='/admin/link'>
         @csrf
-        <label class='admin-form__label'>Link Name
-            <input type='text' name='name' />
-        </label>
-        <label class='admin-form__label'>Full Link Url
-            <input type='text' name='url' />
-        </label>
-        <label class='admin-form__label'>
-            Link Description
-            <textarea name='description'>
-            </textarea>
-        </label>
+        
+        <x-admin-input name="name" />
+        <x-admin-input name="url" />
+        <div>
+        <p>The "Phone String" is a special field for phone numbers that have letters in them (such as 1800-safeauto) - ignore it otherwise</p>
+        <x-admin-input name="phone" />
+        <x-admin-input name="phone_string" />
+        <x-admin-input
+            name="phone_is_primary"
+            label="Is Hotline"
+            type="checkbox" />
+        </div>
+        <x-admin-input name="description" type="textarea" />
+        <br>
         <input type='hidden' name='category_id' value={{$category->id}} />
         <input type='submit' />
     </form>

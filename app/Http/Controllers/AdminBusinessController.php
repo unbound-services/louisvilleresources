@@ -26,23 +26,29 @@ class AdminBusinessController extends Controller
 
     public function edit(Request $request, Business $business){
         $tags = $business->tags;
-        return view('admin.business.edit')->with(compact('business'))->with(compact('tags'));
+        return view('admin.business.edit')->with(compact('business','tags'));
     }
 
     public function update(Request $request, Business $business){
-        $business->update($request->only('name',
-            'description',
-            'street_address',
-            'latitude',
-            'longitude',
-            'zipcode',
-            'email',
-            'phone',
-            'current_status',
-            'hours',
-            'website',
-            'notes',
-            'active'));
+        
+        $data = array_merge( ['active'=>false],$request->only('name',
+        'description',
+        'street_address',
+        'latitude',
+        'longitude',
+        'zipcode',
+        'email',
+        'phone',
+        'current_status',
+        'hours',
+        'website',
+        'notes',
+        'active'));
+
+
+
+        $business->update($data);
+        
         $business->save();
         return redirect()->back();
     }

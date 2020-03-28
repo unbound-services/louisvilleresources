@@ -39,9 +39,19 @@ class AdminController extends Controller
 
 
     public function createLink(Request $request){
-        $data = $request->only(['name', 'url', 'category_id', 'description']);
+        $data = $request->only($this->getLinkAttributeList());
         $link = Link::create($data);
         return redirect()->back();
+    }
+
+    protected function getLinkAttributeList(){
+      return ['name',
+      'url',
+      'phone',
+      'phone_string',
+      'phone_is_primary',
+      'category_id',
+      'description'];
     }
 
     public function editLink(Request $request, Link $link){
@@ -49,7 +59,15 @@ class AdminController extends Controller
     }
 
     public function updateLink(Request $request, Link $link){
-      $link->update($request->all());
+      $data = $request->only($this->getLinkAttributeList());
+      
+      if(!isset($data['phone_is_primary'])) {
+        $data['phone_is_primary'] = false;
+      }
+
+     
+      
+      $link->update($data);
       $link->save();
       return redirect()->back();
     }

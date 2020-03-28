@@ -28,14 +28,25 @@
                                 Our goal is to provide a platform that enables citizens of Louisville to collaborate and compile helpful resources available to their community. If there is any information, links to websites, programs, or grants you think should be included on the site please submit them using our form.
                             </p>
                             @include('components.components-contact-button')
+
+                            {{-- table of contents --}}
+                            <hr>
+                            <p class='category__p'>Select a category below, or scroll down to browse</p>
+                            <ul>
+                            @foreach($categories as $category)
+                                <li><a href='/#category-{{$category->id}}'>{{$category->name}}</a></li>
+                            @endforeach
+                            </ul>
                         </div>
                     </article>
 
+                
 
+                {{-- actual category list --}}
                 @foreach($categories as $category)
                     <article class='category__container'>
                         <header class='category__header'>
-                            <h1 class='category__header__h1'>{{$category->name}}</h1>
+                            <h1 class='category__header__h1' id='category-{{$category->id}}'>{{$category->name}}</h1>
                         </header>
                         <div class='category__content'>
                             @if($category->description)
@@ -43,8 +54,27 @@
                             @endif
                             <ul class='category__list'>
                                 @foreach($category->links as $link)
+                                @php
+                                    $url = $link->url;
+                                    $phone = $link->phone;
+                                    if($link->phone_is_primary && $phone) {
+
+                                    }
+                                @endphp
                                 <li class='list__item'>
-                                    <a class='list__item__a' href='{{$link->url}}'>{{$link->name}}</a>
+                                    {{-- handle hotlines differently from other links --}}
+                                    @if($link->phone_is_primary) 
+                                        <a class='list__item__a' href='tel:{{$link->numericalPhone}}'>{{$link->name}} | {{$link->phoneString}}</a>
+                                        @if($link->url)
+                                            <a class='list__item__a list__item__a--sub' href='{{$link->url}}'>Website</a>
+                                        @endif
+                                    @else
+                                        <a class='list__item__a' href='{{$link->url}}'>{{$link->name}}</a>
+                                         @if($link->phone)
+                                            <a class='list__item__a list__item__a--sub' href='tel:{{$link->numericalPhone}}'>{{$link->phoneString}}</a>
+                                        @endif
+                                    @endif
+                                    
                                     @if($link->description)
                                         <p class='list__item__p'>{{$link->description}}</p>
                                     @endif
@@ -54,5 +84,6 @@
                         </div>
                     </article>
                 @endforeach
+                @include('components.components-contact-button')
 
 @endsection

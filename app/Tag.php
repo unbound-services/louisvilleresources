@@ -22,4 +22,9 @@ class Tag extends Model
     {
         return $this->morphedByMany('App\Business', 'taggable');
     }
+
+    public function tagGroups()
+    {
+        return $this->belongsToMany('App\TagGroup');
+    }
 }

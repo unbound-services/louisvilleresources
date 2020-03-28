@@ -6,15 +6,20 @@ $submitText = 'Save Changes'
 
 <form method="post" action={{$formAction}}>
   @csrf
-  <label class='admin-form__label'>Link Name
-      <input type='text' name='name' value="{{$link->name}}" />
-  </label>
-  <label class='admin-form__label'>Link URL
-      <input type='text' name='url' value="{{$link->url}}" />
-  </label>
-  <label class='admin-form__label'>Link Description
-      <textarea name='description'>{{$link->description}}</textarea>
-  </label>
+
+  <x-admin-input :model="$link" name="name" />
+  <x-admin-input :model="$link" name="url" />
+  <div>
+  <p>The "Phone String" is a special field for phone numbers that have letters in them (such as 1800-safeauto) - ignore it otherwise (note that it may auto-populate)</p>
+  <x-admin-input :model="$link" name="phone" />
+  <x-admin-input :model="$link" name="phone_string" />
+  <x-admin-input :model="$link"
+    name="phone_is_primary"
+    label="Is Hotline"
+    type="checkbox" />
+  </div>
+  <x-admin-input :model="$link" name="description" type="textarea" />
+   <br>
   <button>
     {{$submitText}}
   </button>
