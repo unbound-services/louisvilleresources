@@ -21,11 +21,9 @@ class BusinessDirectoryController extends Controller
   }
 
   public function getByZipcodeRange(Request $request){
-  	$businesses = Business::all();
-  	// $businessQuery = Business::zipcodeRange($request->zipcode,$request->range);
-  	$path = storage_path() . "\app\zipcodes.json"; 
-	$zipcodes = json_decode(file_get_contents($path), true); 
-	var_dump($zipcodes);
+
+  	$businesses = Business::distance($request->latitude, $request->longitude, $request->range);
+
   	return view('pages.pages-directory')->with(compact('businesses'));
   }
 }

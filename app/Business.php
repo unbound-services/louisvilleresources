@@ -13,11 +13,18 @@ class Business extends Model
         return $this->morphToMany('App\Tag', 'taggable');
     }
 
-    public function scopeZipcodeRange($query, $zipcode, $range)
-    {
-        $path = storage_path() . "\app\zipcodes.json"; 
-		$zipcodes = json_decode(file_get_contents($path), true); 
-
-        return $zipcodes;
+    //return businesses that are within radius of user address
+    public function scopeDistance($query, $lat, $long, $range) {
+        return $query->having('distance', '<', $range)
+             ->select(\DB::raw("*,
+                     (3959 * ACOS(COS(RADIANS($lat))
+                           * COS(RADIANS(latitude))
+                           * COS(RADIANS($long) - RADIANS(longitude))
+                           + SIN(RADIANS($lat))
+                           * SIN(RADIANS(latitude)))) AS distance")
+             )
+              ->get();
     }
+
+
 }
