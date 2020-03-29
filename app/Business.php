@@ -12,4 +12,12 @@ class Business extends Model
     {
         return $this->morphToMany('App\Tag', 'taggable');
     }
+
+    public function scopeZipcodeRange($query, $zipcode, $range)
+    {
+        $path = storage_path() . "\app\zipcodes.json"; 
+		$zipcodes = json_decode(file_get_contents($path), true); 
+
+        return $zipcodes;
+    }
 }
