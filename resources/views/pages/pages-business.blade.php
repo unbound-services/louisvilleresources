@@ -26,7 +26,7 @@
       @if($business->website)
         <li class="business-info__li">
           <p class="business-info__p business-info__label">Website</p><!--
-          --><p class="business-info__p business-info__field">{{$business->website}}</p>
+          --><p class="business-info__p business-info__field"><a href="{{$business->website}}" target="_blank">{{$business->website}}</a></p>
         </li>
       @endif
       @if($business->street_address)
