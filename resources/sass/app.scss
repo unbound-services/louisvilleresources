@@ -71,7 +71,7 @@ body{
 		font-weight: bold;
 	    text-transform: uppercase;
 	    vertical-align: top;
-	    padding: 5px;
+	    padding: 5px 3px;
 	}
 	&__a{
 		color:white;
@@ -279,6 +279,12 @@ body{
 			&__h1{
 				padding: 20px 20px 20px 45px;
 			}
+		}
+	}
+
+	.louisville-resources__nav{
+		&__li{
+		    padding: 5px;
 		}
 	}
 }
