@@ -14,7 +14,6 @@
 <section class="directory">
   <h1 class="directory__h1">Business Directory</h1>
   @include('components.components-search')
-  @include('components.components-zipcode-form')
   <ul class="directory__ul">
     @foreach ($businesses as $business)
       <li class="directory__li">
@@ -40,4 +39,7 @@
     @endforeach
   </ul>
 </section>
+
+<script src="https://maps.googleapis.com/maps/api/js?key={{env('GOOGLE_MAPS_API_PUBLIC_KEY', '')}}&libraries=places"></script>
+<script src="{{mix('js/zipcode-autocomplete.js')}}"></script>
 @endsection

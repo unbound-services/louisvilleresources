@@ -22,14 +22,4 @@ class BusinessDirectoryController extends Controller
       ->with(compact('business'));
   }
 
-  public function getAddress(Request $request) {
-    $data = $request->only(
-      'street_address',
-      'latitude',
-      'longitude',
-      'zipcode',
-      'radius',
-    );
-    dd($data);
-  }
 }

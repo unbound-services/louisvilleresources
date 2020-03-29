@@ -9,6 +9,7 @@ if(isset($searchTerm)){
 <div>
 	<form class='search__form' method='GET' action='/search'>
 		<x-components-common-input name="search" label='Search for a business:' :value='$value' />
+		<div class="replace-address-form"></div>
 		<input class='common-form-input__submit search__submit' type="submit" value='Search'>
 	</form>
 </div>
