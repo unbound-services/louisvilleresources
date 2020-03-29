@@ -17,8 +17,19 @@ class BusinessDirectoryController extends Controller
   }
 
   public function view(Business $business){
-    $business->last_confirmed = Carbon::parse($business->last_confirmed)->toFormattedDateString(); 
+    $business->last_confirmed = Carbon::parse($business->last_confirmed)->toFormattedDateString();
     return view('pages.pages-business')
       ->with(compact('business'));
+  }
+
+  public function getAddress(Request $request) {
+    $data = $request->only(
+      'street_address',
+      'latitude',
+      'longitude',
+      'zipcode',
+      'radius',
+    );
+    dd($data);
   }
 }
