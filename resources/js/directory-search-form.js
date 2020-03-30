@@ -15,16 +15,25 @@ class SearchByLocation extends React.Component {
       lng: '',
       address: '',
       zipcode: '',
+      'radius': '',
+      search: '',
+      addressOpen: false,
     }
   }
 
   render(){
-    const { lat, lng, address, zipcode } = this.state;
+    const { lat, lng, address, zipcode, radius, search, addressOpen} = this.state;
 
-    const handleChange = (newAddress) => {
+    // functions
+    const onChange = e => {
+      this.setState({[e.target.name]: e.target.value})
+    }
+    const toggle = () => {
+      this.setState({addressOpen: !addressOpen});
+    }
+    const addressChange = (newAddress) => {
       this.setState({'address': newAddress});
     }
-
     const handleSelect = (address) => {
       this.setState({address});
       geocodeByAddress(address)
@@ -43,28 +52,23 @@ class SearchByLocation extends React.Component {
         .then( latLng => this.setState(latLng) )
         .catch(error => console.error('Error', error));
     }
+    // component parts
+    let addressButton = (
+      <div className="directory-search__expand-container">
+        <button className="directory-search__expand" onClick={toggle}>{addressOpen ? '-' : '+'}</button>
+        Narrow search by distance
+      </div>
 
-    return(
-      <div className="directory-search">
-        <form className='directory-search__form' method='GET' action='/search'>
-          <label className='common-form-input common-form-input--text'>
-              <span className='common-form-input__label  directory-search__label'>Search for a business:</span>
-              <input className='common-form-input__input common-form-input__input--text directory-search__input' type='text' name="search" />
-          </label>
-          <label className="directory-search__label">
-            Distance from your address:
-            <input type="text" name="radius" className="directory-search__input"/>
-          </label>
-          <input type='hidden' name='latitude' value={lat} />
-          <input type='hidden' name='zipcode' value={zipcode} />
-          <input type='hidden' name='longitude' value={lng} />
-          <input className='common-form-input__submit search__submit' type="submit" value='Search'/>
-        </form>
+    )
+
+    let addressBox = '';
+    if(addressOpen) addressBox = (
+      <div className="directory-search__address-box">
         <div className="directory-search__label">
           Your Address:
           <PlacesAutocomplete
             value={address}
-            onChange={handleChange}
+            onChange={addressChange}
             onSelect={handleSelect}
           >
               {({ getInputProps, suggestions, getSuggestionItemProps, loading }) => (
@@ -72,7 +76,7 @@ class SearchByLocation extends React.Component {
                   <input
                     {...getInputProps({
                       placeholder: 'Search Places ...',
-                      className: 'location-search-input',
+                      className: 'directory-search__input',
                     })}
                   />
                   <div className="autocomplete-dropdown-container">
@@ -101,6 +105,28 @@ class SearchByLocation extends React.Component {
               )}
           </PlacesAutocomplete>
         </div>
+        <div className="directory-search__label">
+          Distance from your address in miles:
+          <input type="text" name="radius" className="directory-search__input" onChange={onChange} />
+        </div>
+      </div>
+    )
+    return(
+      <div className="directory-search">
+        <div className='common-form-input common-form-input--text directory-search__label'>
+            Search for a business:
+            <input className='common-form-input__input common-form-input__input--text directory-search__input' type='text' name="search" onChange={onChange} />
+        </div>
+        {addressButton}
+        {addressBox}
+        <form className='directory-search__form' method='GET' action='/search'>
+          <input type="hidden" name="search" value={search} />
+          <input type="hidden" name="radius" value={radius} />
+          <input type='hidden' name='latitude' value={lat} />
+          <input type='hidden' name='zipcode' value={zipcode} />
+          <input type='hidden' name='longitude' value={lng} />
+          <input className='common-form-input__submit directory-search__submit' type="submit" value='Search' />
+        </form>
       </div>
 
     )
