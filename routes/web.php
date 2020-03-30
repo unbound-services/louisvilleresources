@@ -17,7 +17,7 @@ Route::get('/', 'HomeController@index');
 
 Route::get('/directory', 'BusinessDirectoryController@index');
 Route::get('/directory/{business}', 'BusinessDirectoryController@view');
-
+Route::post('/directory/zipcode-search', 'BusinessDirectoryController@getAddress');
 
 Route::get('about', 'HomeController@about');
 

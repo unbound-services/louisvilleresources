@@ -20,22 +20,26 @@
 .directory-entry {
   background: #f7f7f7;
   font-size: 12px;
+  text-transform: uppercase;
   &__header {
     display: block;
     width: 100%;
-    height: 50px;
+    min-height: 50px;
     padding: 20px;
     background: #eee;
 
   }
   &__name {
     display: inline-block;
+    margin: 0;
+    margin-bottom: 5px;
+    font-weight: bold;
     text-transform: uppercase;
   }
   &__status {
-    display: inline-block;
-    float: right;
-    text-transform: uppercase;
+    display: block;
+    margin: 0;
+    font-size: 10px;
   }
 
   &__body {
@@ -54,4 +58,17 @@
   &__read-more {
     display: block;
   }
+}
+
+
+@media all and (min-width:600px) {
+  //
+  // .directory-entry {
+  //   &__status {
+  //     clear: both;
+  //     display: block;
+  //     float: right;
+  //
+  //   }
+  // }
 }

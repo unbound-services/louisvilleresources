@@ -33,6 +33,7 @@
   }
   &__field {
     background: #f3f3f3;
+    word-break: break-word;
   }
 }
 
@@ -52,10 +53,10 @@
       height: 100%;
     }
     &__label {
-      width: 30%;
+      width: 35%;
     }
     &__field {
-      width: 70%;
+      width: 65%;
     }
   }
 

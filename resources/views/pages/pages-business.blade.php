@@ -3,57 +3,65 @@
 @section('content')
 
   <section class="business-info">
-    <h1 class="business-info__h1">Business Name</h1>
+    <h1 class="business-info__h1">{{$business->name}}</h1>
     <ul class="business-info__ul">
-      <li class="business-info__li">
-        <p class="business-info__p business-info__label">Status</p><!--
-        --><p class="business-info__p business-info__field">Pickup Only</p>
-      </li>
-      <li class="business-info__li">
-        <p class="business-info__p business-info__label">Phone</p><!--
-        --><p class="business-info__p business-info__field">{{$business->phone}}</p>
-      </li>
-      <li class="business-info__li">
-        <p class="business-info__p business-info__label">Website</p><!--
-        --><p class="business-info__p business-info__field">{{$business->website}}</p>
-      </li>
-      <li class="business-info__li">
-        <p class="business-info__p business-info__label">Address</p><!--
-        --><p class="business-info__p business-info__field">{{$business->street_address}}</p>
-      </li>
-      <li class="business-info__li">
-        <p class="business-info__p business-info__label">Email</p><!--
-        --><p class="business-info__p business-info__field">{{$business->email}}</p>
-      </li>
-      <li class="business-info__li">
-        <p class="business-info__p business-info__label">Hours</p><!--
-        --><p class="business-info__p business-info__field">{{$business->hours}}</p>
-      </li>
-      <li class="business-info__li business-info__li--full">
-        <p class="business-info__p business-info__label">Description</p><!--
-        --><p class="business-info__p business-info__field">{{$business->description}}</p>
-      </li>
-      <li class="business-info__li business-info__li--full">
-        <p class="business-info__p business-info__label">Notes</p><!--
-        --><p class="business-info__p business-info__field">{{$business->notes}}</p>
-      </li>
-      <li class="business-info__li business-info__li--full">
-        <p class="business-info__p business-info__label">Last confirmed</p><!--
-        --><p class="business-info__p business-info__field">{{$business->last_confirmed}}</p>
-      </li>
+      @if($business->description)
+        <li class="business-info__li">
+          <p class="business-info__p business-info__label">Description</p><!--
+          --><p class="business-info__p business-info__field">{{$business->description}}</p>
+        </li>
+      @endif
+      @if($business->current_status)
+        <li class="business-info__li">
+          <p class="business-info__p business-info__label">Status</p><!--
+          --><p class="business-info__p business-info__field">{{$business->current_status}}</p>
+        </li>
+      @endif
+      @if($business->phone)
+        <li class="business-info__li">
+          <p class="business-info__p business-info__label">Phone</p><!--
+          --><p class="business-info__p business-info__field">{{$business->phone}}</p>
+        </li>
+      @endif
+      @if($business->website)
+        <li class="business-info__li">
+          <p class="business-info__p business-info__label">Website</p><!--
+          --><p class="business-info__p business-info__field"><a href="{{$business->website}}" target="_blank">{{$business->website}}</a></p>
+        </li>
+      @endif
+      @if($business->street_address)
+        <li class="business-info__li">
+          <p class="business-info__p business-info__label">Address</p><!--
+          --><p class="business-info__p business-info__field">{{$business->street_address}}</p>
+        </li>
+      @endif
+      @if($business->email)
+        <li class="business-info__li">
+          <p class="business-info__p business-info__label">Email</p><!--
+          --><p class="business-info__p business-info__field">{{$business->email}}</p>
+        </li>
+      @endif
+      @if($business->hours)
+        <li class="business-info__li">
+          <p class="business-info__p business-info__label">Hours</p><!--
+          --><p class="business-info__p business-info__field">{{$business->hours}}</p>
+        </li>
+      @endif
+      @if($business->last_confirmed)
+        <li class="business-info__li">
+          <p class="business-info__p business-info__label">Last confirmed</p><!--
+          --><p class="business-info__p business-info__field">{{$business->last_confirmed}}</p>
+        </li>
+      @endif
+
+      @if($business->notes)
+        <li class="business-info__li">
+          <p class="business-info__p business-info__label">Notes</p><!--
+          --><p class="business-info__p business-info__field">{{$business->notes}}</p>
+        </li>
+      @endif
+
     </ul>
   </section>
 
 @endsection
-
-{{-- <section class="business-info">
-  <h1 class="business-title">{{$business->name}}</h1>
-  <p><span>Phone: </span>{{$business->phone}}</p>
-  <p><span>Website: </span>{{$business->website}}</p>
-  <p><span>Address: </span>{{$business->street_address}}</p>
-  <p><span>Email: </span>{{$business->email}}</p>
-  <p><span>Hours: </span>{{$business->hours}}</p>
-  <p><span>Description: </span>{{$business->description}}</p>
-  <p><span>Notes: </span>{{$business->notes}}</p>
-  <p><span>Last confirmed: </span>{{$business->last_confirmed}}</p>
-</section> --}}

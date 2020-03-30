@@ -23,7 +23,7 @@ class Business extends Model
                            + SIN(RADIANS($lat))
                            * SIN(RADIANS(latitude)))) AS distance")
              )
-              ->get();
+             ->orderBy('distance', 'asc');
     }
 
 

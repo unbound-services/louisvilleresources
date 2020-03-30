@@ -14,20 +14,25 @@
 <section class="directory">
   <h1 class="directory__h1">Business Directory</h1>
   @include('components.components-search')
-  @include('components.components-search-zipcode')
+  {{-- @include('components.components-search-zipcode') --}}
   <ul class="directory__ul">
     @foreach ($businesses as $business)
       <li class="directory__li">
         <article class="directory-entry">
           <header class="directory-entry__header">
             <p class="directory-entry__name">{{$business->name}}</p>
-            <p class="directory-entry__status">status</p>
+            @if($business->current_status)
+              <p class="directory-entry__status">{{$business->current_status}}</p>
+            @endif
           </header>
           <div class="directory-entry__body">
             <p class="directory-entry__p">{{$business->phone}}</p>
-            <p class="directory-entry__p directory-entry__website">
-              <a href="{{$business->website}}" class="directory-entry__link">Website</a>
-            </p>
+            @if($business->website)
+              <p class="directory-entry__p directory-entry__website">
+                <a href="{{$business->website}}" class="directory-entry__link">Website</a>
+              </p>
+            @endif
+
             <a class="directory-entry__read-more" href="/directory/{{$business->id}}" target="_blank">Read More</a>
           </div>
         </article>
@@ -35,4 +40,7 @@
     @endforeach
   </ul>
 </section>
+
+<script src="https://maps.googleapis.com/maps/api/js?key={{env('GOOGLE_MAPS_API_PUBLIC_KEY', '')}}&libraries=places"></script>
+<script src="{{mix('js/zipcode-autocomplete.js')}}"></script>
 @endsection
