@@ -14,6 +14,7 @@
 <section class="directory">
   <h1 class="directory__h1">Business Directory</h1>
   @include('components.components-search')
+  {{-- @include('components.components-search-zipcode') --}}
   <ul class="directory__ul">
     @foreach ($businesses as $business)
       <li class="directory__li">

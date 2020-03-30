@@ -22,6 +22,7 @@ Route::get('about', 'HomeController@about');
 
 Route::post('submit-resources', 'SubmissionController@submitResources');
 Route::get('search', 'SearchController@search');
+Route::get('radius-search', 'BusinessDirectoryController@getByZipcodeRange');
 Route::get('contact', 'SubmissionController@getForm');
 
 
