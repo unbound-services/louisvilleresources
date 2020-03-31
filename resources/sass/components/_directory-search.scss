@@ -33,15 +33,24 @@
   &__address-box {
     padding-top: 10px;
   }
+  &__select {
+    height: 31px;
+    margin-bottom: 10px;
+    padding: 0 1px;
+    border-radius: 0px;
+    color: #6c6e6f;
+  }
   &__form {
     padding-top: 20px;
   }
   &__submit {
     padding: 2px 10px;
-    background: $darker-blue;
-    color: white;
+    font-size: 12px;
+    letter-spacing: 2px;
     font-weight: bold;
     text-transform: uppercase;
+    background: $darker-blue;
+    color: white;
     border: 2px solid $seafoam;
   }
 }
@@ -51,6 +60,7 @@
   .directory-search {
     &__label {
       width: calc(50% - 10px);
+      vertical-align: top;
       &:first-child {
         margin-right: 20px;
       }

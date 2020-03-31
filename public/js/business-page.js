@@ -30487,7 +30487,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
 
 
- // currently this class is mostly from the example for this componentphp 
+ // currently this class is mostly from the example for this componentphp
 
 var LocationSearchInput = /*#__PURE__*/function (_React$Component) {
   _inherits(LocationSearchInput, _React$Component);
@@ -30498,7 +30498,6 @@ var LocationSearchInput = /*#__PURE__*/function (_React$Component) {
     _classCallCheck(this, LocationSearchInput);
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(LocationSearchInput).call(this, props));
-    console.log('props', props);
     _this.state = {
       address: props.value ? props.value : '',
       lat: props.lat ? props.lat : '',
@@ -30526,7 +30525,6 @@ var LocationSearchInput = /*#__PURE__*/function (_React$Component) {
         address: address
       });
       Object(react_places_autocomplete__WEBPACK_IMPORTED_MODULE_1__["geocodeByAddress"])(address).then(function (results) {
-        console.log('results', results[0]);
         var parts = results[0].address_components; // grab the zipcode real quick
 
         for (var i = 0; i < parts.length; i++) {
@@ -30553,52 +30551,55 @@ var LocationSearchInput = /*#__PURE__*/function (_React$Component) {
           address = _this$state.address,
           zipcode = _this$state.zipcode;
       var name = this.props.name;
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_places_autocomplete__WEBPACK_IMPORTED_MODULE_1___default.a, {
-        value: this.state.address,
-        onChange: this.handleChange,
-        onSelect: this.handleSelect
-      }, function (_ref) {
-        var getInputProps = _ref.getInputProps,
-            suggestions = _ref.suggestions,
-            getSuggestionItemProps = _ref.getSuggestionItemProps,
-            loading = _ref.loading;
-        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", getInputProps({
-          placeholder: 'Search Places ...',
-          className: 'location-search-input'
-        })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-          className: "autocomplete-dropdown-container"
-        }, loading && react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Loading..."), suggestions.map(function (suggestion) {
-          var className = suggestion.active ? 'suggestion-item--active' : 'suggestion-item'; // inline style for demonstration purpose
+      return (/*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_places_autocomplete__WEBPACK_IMPORTED_MODULE_1___default.a, {
+          value: this.state.address,
+          onChange: this.handleChange,
+          onSelect: this.handleSelect
+        }, function (_ref) {
+          var getInputProps = _ref.getInputProps,
+              suggestions = _ref.suggestions,
+              getSuggestionItemProps = _ref.getSuggestionItemProps,
+              loading = _ref.loading;
+          return (/*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", getInputProps({
+              placeholder: 'Search Places ...',
+              className: 'location-search-input'
+            })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+              className: "autocomplete-dropdown-container"
+            }, loading && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Loading..."), suggestions.map(function (suggestion) {
+              var className = suggestion.active ? 'suggestion-item--active' : 'suggestion-item'; // inline style for demonstration purpose
 
-          var style = suggestion.active ? {
-            backgroundColor: '#fafafa',
-            cursor: 'pointer'
-          } : {
-            backgroundColor: '#ffffff',
-            cursor: 'pointer'
-          };
-          return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", getSuggestionItemProps(suggestion, {
-            className: className,
-            style: style
-          }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, suggestion.description));
-        })));
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-        type: "hidden",
-        name: name,
-        value: address
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-        type: "hidden",
-        name: "latitude",
-        value: lat
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-        type: "hidden",
-        name: "zipcode",
-        value: zipcode
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-        type: "hidden",
-        name: "longitude",
-        value: lng
-      }));
+              var style = suggestion.active ? {
+                backgroundColor: '#fafafa',
+                cursor: 'pointer'
+              } : {
+                backgroundColor: '#ffffff',
+                cursor: 'pointer'
+              };
+              return (/*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", getSuggestionItemProps(suggestion, {
+                  className: className,
+                  style: style
+                }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, suggestion.description))
+              );
+            })))
+          );
+        }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+          type: "hidden",
+          name: name,
+          value: address
+        }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+          type: "hidden",
+          name: "latitude",
+          value: lat
+        }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+          type: "hidden",
+          name: "zipcode",
+          value: zipcode
+        }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+          type: "hidden",
+          name: "longitude",
+          value: lng
+        }))
+      );
     }
   }]);
 

@@ -5,6 +5,7 @@ import PlacesAutocomplete, {
   geocodeByAddress,
   getLatLng,
 } from 'react-places-autocomplete';
+import CommonSelect from './components/common/components-common-select.js';
 
 const el = document.querySelector('.replace-address-form');
 class SearchByLocation extends React.Component {
@@ -15,14 +16,16 @@ class SearchByLocation extends React.Component {
       lng: '',
       address: '',
       zipcode: '',
-      'radius': '',
+      radius: '',
       search: '',
       addressOpen: false,
     }
+    if(window.localStorage.getItem('address')) this.state.address = window.localStorage.getItem('address');
   }
 
   render(){
     const { lat, lng, address, zipcode, radius, search, addressOpen} = this.state;
+    const storage = window.localStorage;
 
     // functions
     const onChange = e => {
@@ -33,9 +36,10 @@ class SearchByLocation extends React.Component {
     }
     const addressChange = (newAddress) => {
       this.setState({'address': newAddress});
+      storage.setItem('address', newAddress);
     }
     const handleSelect = (address) => {
-      this.setState({address});
+      addressChange(address)
       geocodeByAddress(address)
         .then(results => {
             console.log('results', results[0])
@@ -56,11 +60,9 @@ class SearchByLocation extends React.Component {
     let addressButton = (
       <div className="directory-search__expand-container">
         <button className="directory-search__expand" onClick={toggle}>{addressOpen ? '-' : '+'}</button>
-        Narrow search by distance
+        Show me what's close to me
       </div>
-
     )
-
     let addressBox = '';
     if(addressOpen) addressBox = (
       <div className="directory-search__address-box">
@@ -107,7 +109,17 @@ class SearchByLocation extends React.Component {
         </div>
         <div className="directory-search__label">
           Distance from your address in miles:
-          <input type="text" name="radius" className="directory-search__input" onChange={onChange} />
+          <CommonSelect
+            name='radius'
+            selected={radius}
+            onChange={onChange}
+            selectClass='directory-search__select'
+          >
+            <option className='common-select__option' key={1} value={5}>5</option>
+            <option className='common-select__option' key={2} value={10}>10</option>
+            <option className='common-select__option' key={3} value={20}>20</option>
+            <option className='common-select__option' key={0} value=''>everything</option>
+          </CommonSelect>
         </div>
       </div>
     )
