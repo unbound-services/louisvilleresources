@@ -4,12 +4,10 @@ import PlacesAutocomplete, {
   getLatLng,
 } from 'react-places-autocomplete';
 
-// currently this class is mostly from the example for this componentphp 
+// currently this class is mostly from the example for this componentphp
 class LocationSearchInput extends React.Component {
   constructor(props) {
     super(props);
-
-    console.log('props',props)
     this.state = { address: props.value ? props.value : '',
         lat: props.lat ? props.lat : '',
         lng: props.lng ? props.lng : '',
@@ -23,12 +21,11 @@ class LocationSearchInput extends React.Component {
   };
 
   handleSelect(address){
-      
+
     this.setState({address});
 
     geocodeByAddress(address)
       .then(results => {
-          console.log('results', results[0])
           const parts = results[0].address_components;
 
         // grab the zipcode real quick
