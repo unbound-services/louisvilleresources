@@ -3,16 +3,22 @@
 .directory-search{
   margin-bottom: 20px;
   &__address-box {
-
+    padding-top: 10px;
   }
   &__label {
     display: inline-block;
     width: 100%;
+    &--address {
+
+    }
   }
+
   &__input {
     display: inline-block;
     width: 100%;
     margin-bottom: 10px;
+    color: #6c6e6f;
+    padding-left: 5px;
   }
   &__expand {
     &-container {
@@ -30,13 +36,24 @@
     border: 2px solid $seafoam;
 
   }
-  &__address-box {
-    padding-top: 10px;
+  &__clear-button {
+    margin-right: 20px;
+    padding: 0px 6px 2px 6px;
+    vertical-align: middle;
+    font-size: 12px;
+    letter-spacing: 1px;
+    line-height: 12px;
+    height: 30px;
+    background: white;
+    color: $darker-blue;
+    text-transform: uppercase;
+    border: 2px solid $seafoam;
   }
   &__select {
     height: 31px;
     margin-bottom: 10px;
     padding: 0 1px;
+    padding-left: 5px;
     border-radius: 0px;
     color: #6c6e6f;
   }
@@ -55,15 +72,39 @@
   }
 }
 
-@media all and (min-width: 600px){
+@media all and (min-width: 640px){
 
   .directory-search {
+    &__address-box {
+    }
     &__label {
-      width: calc(50% - 10px);
       vertical-align: top;
-      &:first-child {
-        margin-right: 20px;
+      &--address {
       }
+      &--radius {
+        width: 56%;
+        max-width: 300px;
+      }
+    }
+    &__select {
+      margin-bottom: 0;
+    }
+    &__clear-button {
+      width: 150px;
+      height: 31px;
+      margin-left: 20px;
+      vertical-align: bottom;
+    }
+    &__submit {
+      height: 31px;
+      padding: 2px 10px;
+      font-size: 16px;
+      letter-spacing: 2px;
+      font-weight: bold;
+      text-transform: uppercase;
+      background: $darker-blue;
+      color: white;
+      border: 2px solid $seafoam;
     }
   }
 }
