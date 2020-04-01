@@ -37,7 +37,6 @@ class SearchByLocation extends React.Component {
     this.addressChange(address)
     geocodeByAddress(address)
       .then(results => {
-          console.log('results', results[0])
           const parts = results[0].address_components;
 
         // grab the zipcode real quick
