@@ -20,7 +20,44 @@ class SearchByLocation extends React.Component {
       search: '',
       addressOpen: false,
     }
-    if(window.localStorage.getItem('address')) this.state.address = window.localStorage.getItem('address');
+
+    this.handleSelect = this.handleSelect.bind(this);
+    this.addressChange = this.addressChange.bind(this);
+    this.clearAddress = this.clearAddress.bind(this);
+  }
+
+  componentDidMount(){
+    if(window.localStorage.getItem('address')) {
+      this.handleSelect(window.localStorage.getItem('address'))
+      this.setState({addressOpen: true});
+    }
+  }
+
+  handleSelect(address) {
+    this.addressChange(address)
+    geocodeByAddress(address)
+      .then(results => {
+          console.log('results', results[0])
+          const parts = results[0].address_components;
+
+        // grab the zipcode real quick
+        for(let i=0;i<parts.length; i++){
+            if(parts[i].types.indexOf('postal_code') > -1 ) {
+                this.setState({ zipcode: parts[i].long_name})
+            }
+        }
+        return getLatLng(results[0])
+      })
+      .then( latLng => this.setState(latLng) )
+      .catch(error => console.error('Error', error));
+  }
+  addressChange(address){
+    this.setState({address})
+    window.localStorage.setItem('address', address);
+  }
+  clearAddress(){
+    this.setState({address: '', lat: '', lng: '', zipcode: '', radius: ''});
+    window.localStorage.setItem('address', '');
   }
 
   render(){
@@ -34,28 +71,7 @@ class SearchByLocation extends React.Component {
     const toggle = () => {
       this.setState({addressOpen: !addressOpen});
     }
-    const addressChange = (newAddress) => {
-      this.setState({'address': newAddress});
-      storage.setItem('address', newAddress);
-    }
-    const handleSelect = (address) => {
-      addressChange(address)
-      geocodeByAddress(address)
-        .then(results => {
-            console.log('results', results[0])
-            const parts = results[0].address_components;
 
-          // grab the zipcode real quick
-          for(let i=0;i<parts.length; i++){
-              if(parts[i].types.indexOf('postal_code') > -1 ) {
-                  this.setState({ zipcode: parts[i].long_name})
-              }
-          }
-          return getLatLng(results[0])
-        })
-        .then( latLng => this.setState(latLng) )
-        .catch(error => console.error('Error', error));
-    }
     // component parts
     let addressButton = (
       <div className="directory-search__expand-container">
@@ -66,12 +82,12 @@ class SearchByLocation extends React.Component {
     let addressBox = '';
     if(addressOpen) addressBox = (
       <div className="directory-search__address-box">
-        <div className="directory-search__label">
+        <div className="directory-search__label directory-search__label--address">
           Your Address:
           <PlacesAutocomplete
             value={address}
-            onChange={addressChange}
-            onSelect={handleSelect}
+            onChange={this.addressChange}
+            onSelect={this.handleSelect}
           >
               {({ getInputProps, suggestions, getSuggestionItemProps, loading }) => (
                 <div>
@@ -107,7 +123,7 @@ class SearchByLocation extends React.Component {
               )}
           </PlacesAutocomplete>
         </div>
-        <div className="directory-search__label">
+        <div className="directory-search__label directory-search__label--radius">
           Distance from your address in miles:
           <CommonSelect
             name='radius'
@@ -115,12 +131,14 @@ class SearchByLocation extends React.Component {
             onChange={onChange}
             selectClass='directory-search__select'
           >
-            <option className='common-select__option' key={1} value={5}>5</option>
-            <option className='common-select__option' key={2} value={10}>10</option>
-            <option className='common-select__option' key={3} value={20}>20</option>
-            <option className='common-select__option' key={0} value=''>everything</option>
+            <option className='common-select__option' key={1} value={1}>1 mile (walking distance)</option>
+            <option className='common-select__option' key={2} value={5}>5 miles</option>
+            <option className='common-select__option' key={3} value={10}>10 miles</option>
+            <option className='common-select__option' key={4} value={20}>20 miles</option>
+            <option className='common-select__option' key={5} value=''>Show me everything</option>
           </CommonSelect>
         </div>
+        <button className="directory-search__clear-button" onClick={this.clearAddress}>Clear Address</button>
       </div>
     )
     return(
