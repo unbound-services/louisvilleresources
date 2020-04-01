@@ -41,6 +41,7 @@ Route::group(['middleware'=>'auth'], function(){
     Route::get('/admin/business/{business}', 'AdminBusinessController@edit');
     Route::post('/admin/business/{business}', 'AdminBusinessController@update');
     Route::post('/admin/business/{business}/tag', 'TagController@addTagsToBusiness');
+    Route::post('/admin/business/{business}/remove-tag/{tag}', 'TagController@removeTagFromBusiness');
 
     Route::get('/admin/tags', 'TagController@index');
     Route::get('/admin/tags/{tag}', 'TagController@edit');

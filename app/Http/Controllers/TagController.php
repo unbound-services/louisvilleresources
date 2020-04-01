@@ -48,4 +48,10 @@ class TagController extends Controller
         return redirect()->back();
     }
 
+    public function removeTagFromBusiness(Business $business, Tag $tag){
+        $business->tags()->detach($tag);
+        $business->save();
+        return redirect()->back();
+    }
+
 }

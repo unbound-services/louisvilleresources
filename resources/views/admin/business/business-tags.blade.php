@@ -1,8 +1,30 @@
     <h2>Tags</h2>
     <ul>
-    @foreach($tags as $tag)
-        <li>{{$tag->name}}</li>
-    @endforeach
+    @if(count($tags))
+        <table>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Remove</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach($tags as $tag)
+                <tr>
+                    <td>{{$tag->name}}</td>
+                    <td><form method="post" action="/admin/business/{{$business_id}}/remove-tag/{{$tag->id}}">
+                            @csrf                            
+                            <input type='submit' value='Remove from Business' />
+                            </form>
+                    </td>
+                </tr>
+                @endforeach
+            </tbody>
+        </table>
+    @else
+        <p>there are no tags connected to this business yet</p>
+    @endif
+
     </ul>
     <h2>Add tags to business</h2>
     <form class='admin-form' method='post' action='/admin/business/{{$business_id}}/tag'>
