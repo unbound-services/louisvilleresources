@@ -12,7 +12,10 @@
 @endsection
 @section('content')
 <section class="directory">
-  <h1 class="directory__h1">Business Directory</h1>
+  <header class='category__header'>
+    <h1 class="directory__h1 category__header__h1">Business Directory</h1>
+  </header>
+  <p class='directory__attribution'>Special thanks to Laura Wallace and <a href='https://www.facebook.com/LauraisLouisville/'>City Concierge Louisville</a> for giving us permission to use the list that she painstakingly compiled to jump-start our directory.</p>
   @include('components.components-search')
   {{-- @include('components.components-search-zipcode') --}}
   <ul class="directory__ul">
@@ -32,7 +35,6 @@
                 <a href="{{$business->website}}" class="directory-entry__link">Website</a>
               </p>
             @endif
-
             <a class="directory-entry__read-more" href="/directory/{{$business->id}}" target="_blank">Read More</a>
           </div>
         </article>
